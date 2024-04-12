@@ -1,0 +1,13 @@
+---
+- name: Install asdf plugins
+  shell:
+    cmd: asdf plugin add "{{ item.name }}" "{{ item.url }}"
+  with_items:
+    - { name: 'golang', url: 'https://github.com/asdf-community/asdf-golang.git' }
+    - { name: 'golangci-lint', url: 'https://github.com/hypnoglow/asdf-golangci-lint.git' }
+    - { name: 'python', url: 'https://github.com/danhper/asdf-python.git' }
+    - { name: 'rust', url: 'https://github.com/asdf-community/asdf-rust.git' }
+    - { name: 'terraform', url: 'https://github.com/asdf-community/asdf-hashicorp.git' }
+    - { name: 'tflint', url: 'https://github.com/skyzyx/asdf-tflint' }
+  #failed_when: (result.rc != 0) and 'already added' not in result.stderr
+  ignore_errors: true

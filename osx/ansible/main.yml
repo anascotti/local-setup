@@ -1,0 +1,31 @@
+---
+- name: Configure host.
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars_files:
+    - config.yml
+
+  pre_tasks:
+    - name: Ensuring Homebrew Is Installed
+      shell:
+        cmd: which brew
+      register: homebrew_check
+      failed_when: homebrew_check.stdout == ''
+
+  tasks:
+    - name: Setup homebrew
+      import_role:
+        name: homebrew
+
+    - name: Install MAS applications # Required mas tool is not installed
+      community.general.mas:
+        id: []
+      ignore_errors: true
+
+    - import_tasks: tasks/asdf.yml
+      tags: ['asdf']
+
+    - import_tasks: tasks/sublime-text.yml
+      when: configure_sublime
+      tags: ['sublime-text']

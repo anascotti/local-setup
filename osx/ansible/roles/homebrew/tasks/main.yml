@@ -1,0 +1,22 @@
+---
+# tasks file for homebrew
+- name: Ensures taps are present via homebrew
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ tap_items }}"
+
+- name: Ensures packages are present via homebrew cask
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: 'appdir=/Applications'
+  with_items: "{{ cask_items }}"
+  ignore_errors: true
+
+- name: Ensures packages are present via homebrew
+  community.general.homebrew:
+    name: "{{ item }}"
+    path: "/Applications"
+    state: present
+  with_items: "{{ homebrew_items }}"

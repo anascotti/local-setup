@@ -1,0 +1,27 @@
+---
+# defaults file for homebrew
+
+cask_items:
+  - docker
+  - drawio
+  - firefox
+  - iterm2
+  - kitty
+  - obsidian
+  - sublime-text
+
+homebrew_items:
+  - ansible-lint
+  - asdf
+  - awscli
+  - fzf
+  - jq
+  - lazydocker
+  - lazygit
+  - neovim
+  - ripgrep
+  - session-manager-plugin
+  - tmux
+  - zsh-autosuggestions
+
+tap_items: []
