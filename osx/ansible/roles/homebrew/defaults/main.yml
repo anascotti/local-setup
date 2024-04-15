@@ -19,9 +19,11 @@ homebrew_items:
   - lazydocker
   - lazygit
   - neovim
+  - npm
   - ripgrep
   - session-manager-plugin
   - tmux
+  - wget
   - zsh-autosuggestions
 
 tap_items: []

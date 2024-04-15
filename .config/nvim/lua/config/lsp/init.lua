@@ -5,8 +5,8 @@ local opts = {}
 local lsp_servers = {
     "bashls",
     "dockerls",
-    "jsonls",
     "gopls",
+    "jsonls",
     "pyright",
     "lua_ls",
     "terraformls",
@@ -28,9 +28,41 @@ local tools = {
     "impl",
   }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
+
+function M._attach(client, _)
+end
+
+
 function M.setup()
-   -- Installer
-  require("config.lsp.installer").setup(lsp_servers, opts)
+
+  require("mason").setup()
+  require("mason-lspconfig").setup {
+    ensure_installed = lsp_servers,
+  }
+
+  --local cmp = require('cmp')
+  --local cmp_lsp = require("cmp_nvim_lsp")
+
+  --local capabilities = vim.tbl_deep_extend(
+    --"force",
+    --{},
+    --vim.lsp.protocol.make_client_capabilities(),
+    --cmp_lsp.default_capabilities())
+
+  local lspconfig = require("lspconfig")
+
+  -- Go
+  lspconfig.gopls.setup{
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    single_file_support = true,
+    on_attach = M._attach,
+    capabilities = M.capabilities,
+  }
+
+
 
 end
 
