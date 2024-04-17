@@ -1,0 +1,5 @@
+---
+- name: Copy nvim lua config
+  copy:
+    src: "{{ playbook_dir }}/../../.config/nvim"
+    dest: $HOME/.config/nvim

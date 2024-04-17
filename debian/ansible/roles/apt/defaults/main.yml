@@ -1,0 +1,13 @@
+---
+# defaults file for homebrew
+
+apt_repos: []
+
+apt_items:
+  - curl
+  - git
+  - fzf
+  - jq
+  - neovim
+  - wget
+  - zsh-autosuggestions

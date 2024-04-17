@@ -1,0 +1,11 @@
+---
+# tasks file for apt
+#- name: Add apt repos
+#  apt_repository:
+#  repo: "{{ apt_repos }}"
+
+- name: Ensures apt packags are present
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ apt_items }}"

@@ -1,0 +1,39 @@
+---
+# tasks file for kitty
+- name: Download kitty binary
+  get_url: 
+    url: https://sw.kovidgoyal.net/kitty/installer.sh 
+    dest: /tmp/installer.sh
+    mode: '0755'
+    
+- name: Execute kitty installer.sh
+  command: sh /tmp/installer.sh   
+
+- name: Remove kitty installer.sh
+  file: 
+    path: /tmp/zsh-installer.sh 
+    state: absent
+- name: Configure kitty files
+  block:
+    - ansible.builtin.file:
+        src:  $HOME/.local/kitty.app/bin/kitty
+        dest: $HOME/.local/bin/kitty
+        state: link
+
+    - ansible.builtin.file:
+        src:  $HOME/.local/kitty.app/bin/kitten
+        dest: $HOME/.local/bin/kitten
+        state: link
+
+    - ansible.builtin.copy:
+        src: ~/.local/kitty.app/share/applications/kitty.desktop 
+        dest: ~/.local/share/applications/
+
+    - ansible.builtin.copy:
+        src: ~/.local/kitty.app/share/applications/kitty-open.desktop 
+        dest: ~/.local/share/applications/
+
+    - shell: "{{ item }}"
+      loop:
+        - sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+        - sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop

@@ -1,0 +1,19 @@
+---
+- name: Configure host.
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Setup apt packages
+      import_role:
+        name: apt
+
+    - import_tasks: tasks/nvim.yml
+      tags: ['nvim']
+
+    - import_tasks: tasks/kitty.yml
+      when: update_packages
+      tags: ['kitty']
