@@ -8,6 +8,7 @@ apt_items:
   - fzf
   - git
   - jq
+  - snap
   - wget
   - zsh-autosuggestions
 

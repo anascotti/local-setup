@@ -12,6 +12,9 @@
         name: apt
       when: update_packages
 
+    - import_tasks: tasks/asdf.yml
+      tags: ['asdf']
+
     - import_tasks: tasks/nvim.yml
       tags: ['nvim']
 

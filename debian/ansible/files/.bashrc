@@ -122,10 +122,10 @@ fi
 
 
 # asdf
-#. "$HOME/.asdf/asdf.sh"
-#. "$HOME/.asdf/completions/asdf.bash"
-#. "$HOME/.asdf/plugins/golang/set-env.bash"
-#. "$HOME/.asdf/plugins/java/set-java-home.bash"
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+. "$HOME/.asdf/plugins/golang/set-env.bash"
+. "$HOME/.asdf/plugins/java/set-java-home.bash"
 
 # nvim
 export PATH="$PATH:/opt/nvim/nvim-linux64/bin"
