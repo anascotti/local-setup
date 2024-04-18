@@ -1,3 +1,5 @@
+local_repos_dir: '$HOME/projects'
+
 homebrew_cask_appdir: /Applications
 
 configure_sublime: true

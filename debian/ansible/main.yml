@@ -19,7 +19,7 @@
       tags: ['nvim']
 
     - import_tasks: tasks/kitty.yml
-      when: update_packages
+      #when: update_packages
       tags: ['kitty']
 
     - import_tasks: tasks/dot-files.yml
