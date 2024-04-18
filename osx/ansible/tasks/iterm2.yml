@@ -1,0 +1,23 @@
+---
+- name: Link iterm2 Config
+  file:
+    src: "{{local_repos_dir}}/local-setup/.config/iterm2/com.googlecode.iterm2.plist"
+    dest: ~/.config/iterm2/com.googlecode.iterm2.plist
+    state: link
+    force: yes
+
+- name: Configure iterm2
+  shell: "{{ item }}"
+  loop:
+     # Specify the preferences directory
+    - defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2"
+    # Tell iTerm2 to use the custom preferences in the directory
+    - defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+- name: Install oh-my-zsh
+  shell: 
+    executable: /bin/sh
+    cmd: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+
+
+

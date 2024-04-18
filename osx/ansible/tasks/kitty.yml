@@ -1,5 +1,7 @@
- ---
-- file:
+---
+- name: Link kitty config
+  file:
     src: "{{local_repos_dir}}/local-setup/.config/kitty/kitty.conf"
-    dest: $HOME/.config/kitty/kitty.conf
+    dest: ~/.config/kitty/kitty.conf
     state: link
+    force: yes

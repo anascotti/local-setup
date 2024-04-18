@@ -1,1 +1,21 @@
 ---
+- name: Ensures dotfiles dir exists # TODO clone
+  file:
+    path: ~/dotfiles
+    state: directory
+
+- name: Copy dotfiles 
+  copy:
+    src:  "{{ item }}"
+    dest: "~/dotfiles/{{ item }}"
+  with_items: "{{ dotfiles }}"
+
+- name: Link dotfiles
+  file:
+    src: "~/dotfiles/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+    mode: 0644
+    force: yes
+  with_items: "{{ dotfiles }}"
+  when: link_dotfiles

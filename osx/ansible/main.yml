@@ -17,15 +17,23 @@
     - name: Setup homebrew
       import_role:
         name: homebrew
+      when: update_packages
 
     - name: Install MAS applications # Required mas tool is not installed
       community.general.mas:
         id: []
       ignore_errors: true
 
+
+    - import_tasks: tasks/iterm2.yml
+
     - import_tasks: tasks/asdf.yml
       tags: ['asdf']
+
+    - import_tasks: tasks/kitty.yml
 
     - import_tasks: tasks/sublime-text.yml
       when: configure_sublime
       tags: ['sublime-text']
+
+    - import_tasks: tasks/dot-files.yml

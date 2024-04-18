@@ -19,7 +19,7 @@
 
 - name: Ensure Sublime text user Preferences and theme are set.
   copy:
-    src: "files/sublime/{{ item }}"
+    src: "{{local_repos_dir}}/local-setup/.config/sublime/{{ item }}"
     dest: "{{ sublime_base_path }}/{{ sublime_config_path }}/{{ item }}"
   loop:
     - "Preferences.sublime-settings"

@@ -1,7 +1,13 @@
-local_repos_dir: '$HOME/projects'
+local_repos_dir: '~/projects'
 
+update_packages: false
 homebrew_cask_appdir: /Applications
 
 configure_sublime: true
 sublime_base_path: '~/Library/Application Support/Sublime Text 3'
 sublime_config_path: "Packages/User"
+
+
+link_dotfiles: false
+dotfiles: 
+  - .zshrc

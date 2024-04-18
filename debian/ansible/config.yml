@@ -4,3 +4,6 @@ update_packages: false
 update_nvim_config: false
 
 asdf_version: 'v0.14.0'
+
+dotfiles: 
+  - .bashrc
