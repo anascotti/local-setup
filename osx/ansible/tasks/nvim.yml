@@ -2,7 +2,7 @@
 - name: Link nvim config
   file:
     src: "{{local_repos_dir}}/local-setup/.config/nvim"
-    dest: "$HOME/.config/nvim"
+    dest: "~/.config/nvim"
     state: link
     mode: 0755
     force: yes

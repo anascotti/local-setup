@@ -36,4 +36,6 @@
       when: configure_sublime
       tags: ['sublime-text']
 
+    - import_tasks: tasks/nvim.yml
+
     - import_tasks: tasks/dot-files.yml
