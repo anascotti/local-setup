@@ -5,9 +5,14 @@ apt_repos: []
 
 apt_items:
   - curl
-  - git
   - fzf
+  - git
   - jq
-  - neovim
   - wget
   - zsh-autosuggestions
+
+binary_items:
+  - { name: 'nvim', src: 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz' }
+
+dotfiles:
+ - .bashrc  

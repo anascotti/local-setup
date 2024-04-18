@@ -10,6 +10,7 @@
     - name: Setup apt packages
       import_role:
         name: apt
+      when: update_packages
 
     - import_tasks: tasks/nvim.yml
       tags: ['nvim']
@@ -17,3 +18,6 @@
     - import_tasks: tasks/kitty.yml
       when: update_packages
       tags: ['kitty']
+
+    - import_tasks: tasks/dot-files.yml
+      tags: ['dotfiles']

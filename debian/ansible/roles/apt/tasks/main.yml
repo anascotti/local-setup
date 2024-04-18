@@ -4,8 +4,32 @@
 #  apt_repository:
 #  repo: "{{ apt_repos }}"
 
+- name: Ensures apt packags requiring sudo are present
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: []
+
 - name: Ensures apt packags are present
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   with_items: "{{ apt_items }}"
+
+- name: Install pre-built
+  block:
+  - name: Ensures dir exists
+    file:
+      path: "/opt/{{ item.name }}"
+      state: directory
+    with_items: "{{ binary_items }}"
+    become: yes 
+
+  - name: Download and unpack from HTTP source
+    unarchive: 
+      src: "{{ item.src }}"
+      dest: "/opt/{{ item.name }}"
+      copy: false
+    with_items: "{{ binary_items }}"
+    become: yes 

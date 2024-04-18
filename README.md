@@ -4,6 +4,7 @@ xcode-select --install
 brew install ansible
 
 ansible-playbook -i inventory main.yml
+ansible-playbook -i inventory main.yml --ask-become-pass
 ```
 
 
@@ -17,3 +18,4 @@ wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0
 echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/ansible.list
 sudo apt update && sudo apt install ansible
 ```
+
