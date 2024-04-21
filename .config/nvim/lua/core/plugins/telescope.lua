@@ -25,6 +25,7 @@ local M = {
   dependencies = { 
     "nvim-lua/plenary.nvim",
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    "nvim-tree/nvim-web-devicons",
     --"crispgm/telescope-heading.nvim",
     "nvim-telescope/telescope-symbols.nvim",
     --"nvim-telescope/telescope-file-browser.nvim",

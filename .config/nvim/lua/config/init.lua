@@ -6,8 +6,5 @@ local function init()
   require("config.keymaps")
   require("config.colorschemes")
 
-
-
 end
-
 init()

@@ -18,11 +18,13 @@ homebrew_items:
   - jq
   - lazydocker
   - lazygit
+  - make 
   - neovim
   - npm
   - ripgrep
   - session-manager-plugin
   - tmux
+  - tree
   - wget
   - zsh
   - zsh-autosuggestions

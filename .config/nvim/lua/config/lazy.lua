@@ -23,10 +23,14 @@ require("lazy").setup("core.plugins", {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = false,
   },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
   change_detection = {
     -- automatically check for config file changes and reload the ui
-    enabled = false,
-    notify = true, -- get a notification when changes are found
+    enabled = true,
+    notify = false, -- get a notification when changes are found
   },
   debug = false,
 })

@@ -15,5 +15,9 @@ apt_items:
 binary_items:
   - { name: 'nvim', src: 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz' }
 
+snap_items:
+  - lazygit-gm
+  - tmux
+
 dotfiles:
  - .bashrc  

@@ -33,3 +33,8 @@
       copy: false
     with_items: "{{ binary_items }}"
     become: yes 
+
+  - name: Install snap items
+  community.general.snap:
+    name: "{{ item }}"
+  with_items: "{{ snap_items }}"
