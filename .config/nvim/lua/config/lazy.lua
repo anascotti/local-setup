@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Remap , as leader key
 -- Must be before lazy
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 --vim.keymap.set("n", "<leader>ml", "<cmd>Lazy<cr>")
 
 require("lazy").setup("plugins", {
