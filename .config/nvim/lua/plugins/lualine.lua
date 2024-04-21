@@ -4,53 +4,53 @@ return {
   config = function()
     local lualine = require ("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-    local colors = {
-      blue = "#65D1FF",
-      green = "#3EFFDC",
-      violet = "#FF61EF",
-      yellow = "#FFDA7B",
-      red = "#FF4A4A",
-      fg = "#c3ccdc",
-      bg = "#112638",
-      inactive_bg = "#2c3043",
+  
+    local C = require("catppuccin.palettes").get_palette(flavour)
+    local O = require("catppuccin").options
+    local catppuccin = {}
+
+    local transparent_bg = O.transparent_background and "NONE" or C.mantle
+
+    catppuccin.normal = {
+      a = { bg = C.blue, fg = C.mantle, gui = "bold" },
+      b = { bg = C.surface0, fg = C.blue },
+      c = { bg = transparent_bg, fg = C.text },
     }
 
-    local my_lualine_theme = {
-      normal = {
-        a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      insert = {
-        a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      visual = {
-        a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      command = {
-        a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      replace = {
-        a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      inactive = {
-        a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
-        b = { bg = colors.inactive_bg, fg = colors.semilightgray },
-        c = { bg = colors.inactive_bg, fg = colors.semilightgray },
-      },
+    catppuccin.insert = {
+      a = { bg = C.green, fg = C.base, gui = "bold" },
+      b = { bg = C.surface0, fg = C.green },
+    }
+
+    catppuccin.terminal = {
+      a = { bg = C.green, fg = C.base, gui = "bold" },
+      b = { bg = C.surface0, fg = C.green },
+    }
+
+    catppuccin.command = {
+      a = { bg = C.peach, fg = C.base, gui = "bold" },
+      b = { bg = C.surface0, fg = C.peach },
+    }
+
+    catppuccin.visual = {
+      a = { bg = C.mauve, fg = C.base, gui = "bold" },
+      b = { bg = C.surface0, fg = C.mauve },
+    }
+
+    catppuccin.replace = {
+      a = { bg = C.red, fg = C.base, gui = "bold" },
+      b = { bg = C.surface0, fg = C.red },
+    }
+
+    catppuccin.inactive = {
+      a = { bg = transparent_bg, fg = C.blue },
+      b = { bg = transparent_bg, fg = C.surface1, gui = "bold" },
+      c = { bg = transparent_bg, fg = C.overlay0 },
     }
 
     lualine.setup({
       options = {
-        theme = my_lualine_theme,
+        theme = catppuccin,
       },
       sections = {
         lualine_x = {
