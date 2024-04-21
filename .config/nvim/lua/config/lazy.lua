@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 --vim.keymap.set("n", "<leader>ml", "<cmd>Lazy<cr>")
 
-require("lazy").setup("core.plugins", {
+require("lazy").setup("plugins", {
   -- defaults = { lazy = true },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
