@@ -27,4 +27,5 @@ homebrew_items:
   - zsh
   - zsh-autosuggestions
 
-tap_items: []
+tap_items: 
+#  - cask-fonts

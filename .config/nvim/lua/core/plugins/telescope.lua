@@ -21,54 +21,41 @@ end
 
 local M = {
   'nvim-telescope/telescope.nvim',
-  cmd = "Telescope",
+  branch = "0.1.x",
   dependencies = { 
-    "jvgrootveld/telescope-zoxide",
-    "crispgm/telescope-heading.nvim",
+    "nvim-lua/plenary.nvim",
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    --"crispgm/telescope-heading.nvim",
     "nvim-telescope/telescope-symbols.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    --"nvim-telescope/telescope-file-browser.nvim",
   },
   config = function()
     local actions = require "telescope.actions"
     local telescope = require "telescope"
 
     telescope.setup({
-      pickers = {
-        find_files = {
-          hidden = false,
-        },
-        oldfiles = {
-          cwd_only = true,
-        },
-        buffers = {
-          ignore_current_buffer = true,
-          sort_lastused = true,
-        },
-        live_grep = {
-          only_sort_text = true, -- grep for content and not file name/path
-          mappings = {
-            i = { ["<c-f>"] = actions.to_fuzzy_refine },
+      defaults = {
+        path_display = { "smart" },
+        mappings = {
+          i = {
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
         },
-      },
-       extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown({}),
-        },
-        fzf = {},
-        file_browser = file_browser_config(),
       },
 
     })
     
-    -- keymaps
-    local builtin = require("telescope.builtin")
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-
-
     -- extensions
-    telescope.load_extension "fzf"
+    telescope.load_extension("fzf")
+
+    -- keymaps
+    local keymap = vim.keymap
+    keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd"})
+    keymap.set('n', '<leader>fr', "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files"})
+    keymap.set('n', '<leader>fs', "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy string in cwd"})
+    keymap.set('n', '<leader>fc', "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor"})
     end,
   
 }
