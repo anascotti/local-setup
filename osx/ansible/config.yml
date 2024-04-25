@@ -1,9 +1,43 @@
 local_repos_dir: '~/projects'
 
-update_packages: false
+update_packages: true
 homebrew_cask_appdir: /Applications
 
-configure_sublime: true
+cask_items:
+  - docker
+  - drawio
+  - firefox
+  - iterm2
+  - kitty
+  - obsidian
+  - sublime-text
+
+homebrew_items:
+  - ansible-lint
+  - asdf
+  - awscli
+  - font-meslo-lg-nerd-font
+  - fzf
+  - jq
+  - lazydocker
+  - lazygit
+  - make
+  - neovim
+  - npm
+  - ripgrep
+  - session-manager-plugin
+  - tmux
+  - tree
+  - wget
+  - koekeishiya/formulae/yabai
+  - zsh
+  - zsh-autosuggestions
+
+tap_items:
+  - koekeishiya/formulae
+
+
+configure_sublime: false
 sublime_base_path: '~/Library/Application Support/Sublime Text 3'
 sublime_config_path: "Packages/User"
 

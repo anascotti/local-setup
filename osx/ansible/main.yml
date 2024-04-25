@@ -14,9 +14,8 @@
       failed_when: homebrew_check.stdout == ''
 
   tasks:
-    - name: Setup homebrew
-      import_role:
-        name: homebrew
+
+    - import_tasks: tasks/homebrew.yml
       when: update_packages
 
     - name: Install MAS applications # Required mas tool is not installed

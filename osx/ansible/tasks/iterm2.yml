@@ -19,5 +19,8 @@
     executable: /bin/sh
     cmd: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 
-
-
+- name: Checkout catppuccin theme
+  ansible.builtin.git:
+    repo: 'https://github.com/catppuccin/iterm'
+    dest: "{{ local_repos_dir }}/iterm-catppuccin"
+    version: main
