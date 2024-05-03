@@ -13,12 +13,15 @@ cask_items:
   - sublime-text
 
 homebrew_items:
+  - act
   - ansible-lint
   - asdf
   - awscli
   - font-meslo-lg-nerd-font
   - fzf
   - jq
+  - koekeishiya/formulae/yabai
+  - koekeishiya/formulae/skhd
   - lazydocker
   - lazygit
   - make
@@ -29,7 +32,6 @@ homebrew_items:
   - tmux
   - tree
   - wget
-  - koekeishiya/formulae/yabai
   - zsh
   - zsh-autosuggestions
 
@@ -42,6 +44,7 @@ sublime_base_path: '~/Library/Application Support/Sublime Text 3'
 sublime_config_path: "Packages/User"
 
 
+configure_iterm2: false
 link_dotfiles: false
 dotfiles: 
   - .zshrc

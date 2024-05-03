@@ -25,6 +25,7 @@
 
 
     - import_tasks: tasks/iterm2.yml
+      when: configure_iterm2
 
     - import_tasks: tasks/asdf.yml
       tags: ['asdf']
@@ -36,5 +37,7 @@
       tags: ['sublime-text']
 
     - import_tasks: tasks/nvim.yml
+
+    - import_tasks: tasks/yabai.yml
 
     - import_tasks: tasks/dot-files.yml

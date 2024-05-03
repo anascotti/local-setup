@@ -1,2 +1,15 @@
 ---
-
+- name: Link yabai config
+  file:
+    src: "{{local_repos_dir}}/local-setup/.config/yabai"
+    dest: "~/.config/yabai"
+    state: link
+    mode: 0755
+    force: yes
+- name: Link skhd config
+  file:
+    src: "{{local_repos_dir}}/local-setup/.config/skhd"
+    dest: "~/.config/skhd"
+    state: link
+    mode: 0755
+    force: yes
