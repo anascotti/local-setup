@@ -76,11 +76,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# asdf
-source $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-source $HOME/.asdf/completions/asdf.bash 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -116,20 +111,60 @@ setopt INC_APPEND_HISTORY
 setopt appendhistory
 setopt EXTENDED_HISTORY
 
+#function awsdev() {
+#        export AWS_PROFILE=nv-automation-dev
+#        aws sso login --profile nv-automation-dev
+#}
 
-# enable fzf keybindings for Zsh:
+
+# asdf
+source $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+source $HOME/.asdf/completions/asdf.bash 
+
+# enable fzf keybindings for Zsh ($(brew --prefix)/opt/fzf/install)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
 
 # aws command completion
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
-complete -C '/usr/local/bin/aws_completer' aws
+complete -C '/opt/homebrew/bin/aws_completer' aws
 
 
+# kubectl command completion
+source <(kubectl completion zsh)
+
+# golang
+source $HOME/.asdf/plugins/golang/set-env.zsh
+#export PATH="$HOME/.asdf/shims/bin:$PATH"
+
+
+# Northvolt 
+GOVERSION=$(go env GOVERSION)
+source $HOME/src/github.com/northvolt/tools/etc/nvrc.sh
+source $HOME/src/github.com/northvolt/tools/bin/git-global-config.sh
+#source ~/src/github.com/northvolt/nv-aws-sso-configs/aws-cli-helper-commands
+
+export NC_DOMAIN=core.nc-api-cognito.aut-dev.aws.nvlt.co/api
+
+
+
+# functions
+function cd_up() {
+  cd $(printf "%0.s../" $(seq 1 $1 ));
+}
 # aliases
-alias nv="nvim"
+
+#alias nv="nvim" (nv alias used by nvrc.sh)
 alias copy-plan="find * -name '*.plan' -maxdepth 0 -print | head -n 1 | xargs -I{} terraform show -no-color {}|pbcopy"
+alias tg="terragrunt"
+alias tgprune="find . -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;"
+alias cd..="cd_up"
+alias goreshim="asdf reshim golang"
+alias docker=podman
+
+# ALL custom stuff
 
 # psql
 #export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
@@ -139,3 +174,16 @@ alias copy-plan="find * -name '*.plan' -maxdepth 0 -print | head -n 1 | xargs -I
 
 # rust
 #export RUST_WITHOUT=rust-docs
+
+
+
+
+
+# bun completions
+[ -s "/Users/anascotti/.bun/_bun" ] && source "/Users/anascotti/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+

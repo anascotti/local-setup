@@ -17,10 +17,10 @@ shift + alt - n : yabai -m space --layout stack
 shift + alt - b : yabai -m space --layout bsp
 
 # swap windows
-alt + cmd - left : yabai -m window --swap west
-alt + cmd - down : yabai -m window --swap south
-alt + cmd - up : yabai -m window --swap north
-alt + cmd - right : yabai -m window --swap east
+ctrl + cmd - left : yabai -m window --swap west
+ctrl + cmd - down : yabai -m window --swap south
+ctrl + cmd - up : yabai -m window --swap north
+ctrl + cmd - right : yabai -m window --swap east
 
 # move window
 ctrl + alt + cmd - left : yabai -m window --warp west

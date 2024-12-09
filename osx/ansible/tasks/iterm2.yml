@@ -14,7 +14,7 @@
     # Tell iTerm2 to use the custom preferences in the directory
     - defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
-- name: Install oh-my-zsh
+- name: Install oh-my-zsh (fix)
   shell: 
     executable: /bin/sh
     cmd: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh

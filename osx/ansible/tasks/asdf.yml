@@ -1,7 +1,14 @@
 ---
+- name: Checkout asdf
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: "$HOME/.asdf"
+    version: "{{asdf_version}}"
+
 - name: Install asdf plugins
   shell:
-    cmd: asdf plugin add "{{ item.name }}" "{{ item.url }}"
+    executable: /bin/bash
+    cmd: "source $HOME/.asdf/asdf.sh && asdf plugin add {{ item.name }} {{ item.url }}"
   with_items:
     - { name: 'golang', url: 'https://github.com/asdf-community/asdf-golang.git' }
     - { name: 'golangci-lint', url: 'https://github.com/hypnoglow/asdf-golangci-lint.git' }

@@ -12,7 +12,7 @@
 
 - name: Link dotfiles
   file:
-    src: "~/dotfiles/{{ item }}"
+    src: "{{ local_repos_dir }}/local-setup/osx/ansible/files/{{ item }}"
     dest: "~/{{ item }}"
     state: link
     mode: 0644

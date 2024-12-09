@@ -104,6 +104,19 @@ return {
           },
         })
       end,
+      ["gopls"] = function()
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+          settings = {
+            gopls = {
+             staticcheck = true,
+             usePlaceholders = true,
+             semanticTokens = true,
+             completeUnimported= true,
+            },
+          },
+        })
+      end,
     })
   end,
 }

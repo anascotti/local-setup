@@ -1,23 +1,31 @@
 local_repos_dir: '~/projects'
 
-update_packages: true
+update_packages: false
 homebrew_cask_appdir: /Applications
 
+asdf_version: 'v0.14.0'
+
 cask_items:
-  - docker
-  - drawio
-  - firefox
+#  - docker
+#  - drawio
+#  - firefox
   - iterm2
-  - kitty
+#  - kitty
   - obsidian
   - sublime-text
 
 homebrew_items:
+  - ack
   - act
   - ansible-lint
-  - asdf
+#  - asdf (use git instead)
   - awscli
+  - aws2-wrap
+  - bash-completion@2
+  - colordiff
   - font-meslo-lg-nerd-font
+  - gh
+  - gnu-sed
   - fzf
   - jq
   - koekeishiya/formulae/yabai
@@ -32,6 +40,7 @@ homebrew_items:
   - tmux
   - tree
   - wget
+  - yq
   - zsh
   - zsh-autosuggestions
 
@@ -48,3 +57,5 @@ configure_iterm2: false
 link_dotfiles: false
 dotfiles: 
   - .zshrc
+
+configure_kitty: false

@@ -9,7 +9,7 @@ keymap.set("", "<left>", "<nop>")
 keymap.set("", "<right>", "<nop>")
 
 -- general keymaps
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with j jkk" }) -- mode
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with j jk" }) -- mode
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- clean search
 
 -- split windows
