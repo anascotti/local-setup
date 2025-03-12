@@ -109,10 +109,15 @@ return {
           capabilities = capabilities,
           settings = {
             gopls = {
-             staticcheck = true,
              usePlaceholders = true,
-             semanticTokens = true,
-             completeUnimported= true,
+             hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+             }
             },
           },
         })
