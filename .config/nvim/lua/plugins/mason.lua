@@ -49,7 +49,7 @@ return {
         -- Go
         "iferr",
         "impl",
-        "gofumpt",
+        --"gofumpt",
         "goimports",
         "gomodifytags",
         "golangci-lint",
